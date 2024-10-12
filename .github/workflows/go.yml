@@ -24,4 +24,4 @@ jobs:
       run: go build -v ./...
 
     - name: Test Number Generator
-      run: go test -v ./helpers -count 10000 -failfast
+      run: go test -v ./utils -count 10000 -failfast
