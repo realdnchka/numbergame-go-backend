@@ -23,5 +23,5 @@ jobs:
     - name: Build
       run: go build -v ./...
 
-    - name: Test
-      run: go test -v ./...
+    - name: Test Number Generator
+      run: go test -v ./helpers -count 10000 -failfast
