@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"numbergame/backend/helpers"
+	"numbergame/backend/utils"
 )
 
 type NumberResponse struct {
@@ -14,7 +14,7 @@ type NumberResponse struct {
 
 func getNumbers(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("got / request\n")
-	var numbers, sum = helpers.GenerateNumbers(5)
+	var numbers, sum = utils.GenerateNumbers(5)
 	
 	numberResponse := NumberResponse{
 		Numbers: numbers,
