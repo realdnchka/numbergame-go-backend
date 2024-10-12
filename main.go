@@ -1,10 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"numbergame/backend/helpers"
-	"encoding/json"
 )
 
 type NumberResponse struct {
