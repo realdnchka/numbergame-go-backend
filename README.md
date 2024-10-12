@@ -1,1 +1,1 @@
-# numbergame-go-backend
+# Backend for NumberGame writed on golang
