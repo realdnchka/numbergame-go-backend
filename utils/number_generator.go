@@ -15,7 +15,7 @@ func GenerateNumbers(totalNumbers int) ([]int, int) {
 	}
 	
 	//Generates random sum from numbers
-	for i:= 0; i < rand.IntN(3) + 2; i++ {
+	for i:= 0; i < rand.IntN(totalNumbers - 2) + 2; i++ {
 		sum += numbers[i]
 	}
 	

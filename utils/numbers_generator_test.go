@@ -5,30 +5,43 @@ import(
 	"strconv"
 )
 
+var arr = []int {3, 4, 5, 6, 7, 8, 9, 10}
+
 func TestGenerateNumberCorrectTotalOfNumbers(t *testing.T) {
-	numbers, sum := GenerateNumbers(5)
-	_ = sum
-	
-	if(len(numbers) != 5) {
-		t.Errorf("Total of numbers is incorrect. Total is %d, needed is %d", len(numbers), 5)
+	for _, count := range arr {
+		t.Run("Generates correct total of numbers", func(t *testing.T) {
+			numbers, _ := GenerateNumbers(count)
+			
+			if(len(numbers) != count) {
+				t.Errorf("Total of numbers is incorrect. Got: %d, expected: %d", len(numbers), count)
+			}
+		})
 	}
 }
 
 func TestGenerateNumberMoreThanOneSolution(t *testing.T) {
-	numbers, sum := GenerateNumbers(5)
-	
-	for i:= 0; i < len(numbers); i++ {
-		if numbers[i] == sum {
-			t.Errorf("\nOne solution discover! Number is: %d, index is: %d, slice is: %ssummary is: %d", numbers[i], i, convertArrayIntToString(numbers), sum)
-		}
+	for _, count := range arr {
+		t.Run("Not generates one-num solution", func(t *testing.T) {
+			numbers, sum := GenerateNumbers(count)
+			
+			for i:= 0; i < len(numbers); i++ {
+				if numbers[i] == sum {
+					t.Errorf("\nOne-num solution discover! Number is: %d, index is: %d, slice is: %ssummary is: %d", numbers[i], i, convertArrayIntToString(numbers), sum)
+				}
+			}
+		})
 	}
 }
 
 func TestGenerateNumbersSumValidation(t *testing.T) {
-	numbers, sum := GenerateNumbers(5)
-	
-	if !canSumSubset(GenerateNumbers(5)) {
-		t.Errorf("\nWanted %d, numbers are: %s", sum, convertArrayIntToString(numbers))
+	for _, count := range arr {
+		t.Run("Sum validation", func(t *testing.T) {
+			numbers, sum := GenerateNumbers(count)
+			
+			if !canSumSubset(GenerateNumbers(count)) {
+				t.Errorf("\nWanted %d, numbers are: %s", sum, convertArrayIntToString(numbers))
+			}
+		})
 	}
 }
 
