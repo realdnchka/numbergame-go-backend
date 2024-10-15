@@ -4,15 +4,19 @@ import (
 	"encoding/json"
 	"net/http"
 	"numbergame/backend/utils"
+	"numbergame/backend/utils/assert"
 	"strconv"
 )
 
 //Endpoint for generating set of numbers and summary
 func GetNumbers(w http.ResponseWriter, r *http.Request) {
-	var count, err = strconv.ParseInt(r.URL.Query().Get("count"), 0, 64)
-	if err != nil {
-		count = 5
-	}
+	var countParam = r.URL.Query().Get("count")
+	assert.NotEmptyString(countParam)
+	
+	var count int64 = 5
+	
+	count, err := strconv.ParseInt(countParam, 10, 32)
+	assert.NotError(err, "Unable to parse 'count' param")
 	
 	var numbers, sum = utils.GenerateNumbers(int(count))
 	
