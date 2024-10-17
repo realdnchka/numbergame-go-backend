@@ -7,7 +7,7 @@ import (
 
 func Logging(f http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		log.Printf("[endpoint]: %s; [device]: %s", r.UserAgent(), r.URL.Path)	
+		log.Printf("[endpoint]: %s; [device]: %s", r.URL.Path, r.UserAgent())
 		f(w, r)
 	}
 }
